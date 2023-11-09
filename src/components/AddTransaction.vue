@@ -1,5 +1,5 @@
 <template>
-  <h3>Add new transaction</h3>
+  <h3>Add item:</h3>
 
   <form id="form" @submit.prevent="onSubmit">
     <div class="form-control">
@@ -9,11 +9,11 @@
     <div class="form-control">
       <label for="amount"
         >Amount <br />
-        (negative - expense, positive - income)</label
+        (negative = expense, positive = income)</label
       >
       <input type="text" v-model="amount" id="amount" placeholder="Enter amount..." />
     </div>
-    <button class="btn">Add transaction</button>
+    <button class="btn">Submit</button>
   </form>
 </template>
 
