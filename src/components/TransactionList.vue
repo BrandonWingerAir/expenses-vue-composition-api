@@ -7,7 +7,9 @@
       :key="transaction.id"
       :class="transaction.amount < 0 ? 'minus' : 'plus'"
     >
-      {{transaction.text}} <span>${{transaction.amount}}</span><button @click="deleteTransaction(transaction.id)" class="delete-btn">x</button>
+      {{transaction.text}} <span>${{transaction.amount}}</span>
+      <button @click="editTransaction(transaction.id)" class="edit-btn">✏️</button>
+      <button @click="deleteTransaction(transaction.id)" class="delete-btn">x</button>
     </li>
 
     <!-- Placeholder Items -->
@@ -23,7 +25,7 @@
 <script setup>
 import { defineProps } from 'vue';
 
-const emit = defineEmits(['transactionDeleted']);
+const emit = defineEmits(['transactionDeleted', 'transactionEdit']);
 
 const props = defineProps({
   transactions: {
@@ -31,6 +33,10 @@ const props = defineProps({
     required: true
   }
 });
+
+const editTransaction = (id) => {
+  emit('transactionEdit', id);
+};
 
 const deleteTransaction = (id) => {
   emit('transactionDeleted', id);

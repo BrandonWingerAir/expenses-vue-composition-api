@@ -4,14 +4,14 @@
   <form id="form" @submit.prevent="onSubmit">
     <div class="form-control">
       <label for="text">Title</label>
-      <input type="text" id="text" v-model="text" placeholder="Enter text..." />
+      <input type="text" id="text" v-model="text" placeholder="Enter text..."/>
     </div>
     <div class="form-control">
       <label for="amount"
-        >Amount <br />
+        >Amount <br/>
         (negative = expense, positive = income)</label
       >
-      <input type="text" v-model="amount" id="amount" placeholder="Enter amount..." />
+      <input type="text" id="amount" v-model="amount" placeholder="Enter amount..."/>
     </div>
     <button class="btn">Submit</button>
   </form>

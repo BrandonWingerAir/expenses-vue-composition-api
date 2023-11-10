@@ -3,7 +3,7 @@
   <div class="container">
     <Balance :total="+total"/>
     <IncomeExpenses :income="+income" :expenses="+expenses"/>
-    <TransactionList :transactions="transactions" @transactionDeleted="handleTransactionDeleted"/>
+    <TransactionList :transactions="transactions" @transactionEdit="handleTransactionEdit" @transactionDeleted="handleTransactionDeleted"/>
     <AddTransaction @transactionSubmitted="handleTransactionSubmitted"/>
   </div>
 </template>
@@ -76,12 +76,16 @@ const generateUniqueId = () => {
   return Math.floor(Math.random() * 1000000);
 }
 
+// Edit Item (Incomplete)
+const handleTransactionEdit = (id) => {
+  const transactionToEdit = transactions.value.filter((transaction) => transaction.id == id);
+  console.log(transactionToEdit[0].text + ': $' + transactionToEdit[0].amount);
+}
+
 // Delete Item
 const handleTransactionDeleted = (id) => {
   transactions.value = transactions.value.filter((transaction) => transaction.id !== id);
-
   saveListToLocalStorage();
-
   toast.success('Transaction deleted.');
 }
 
